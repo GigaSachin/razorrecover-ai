@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: razorrecover-api
+    ports:
+      - "8000:8000"
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-razorrecover-ai-dev-secret-key-32bytes!}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@db:5432/razorrecover}
+    depends_on:
+      - db
+    command: uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  db:
+    image: postgres:16-alpine
+    container_name: razorrecover-db
+    environment:
+      POSTGRES_DB: razorrecover
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
