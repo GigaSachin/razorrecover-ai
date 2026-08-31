@@ -173,6 +173,3 @@ razorrecover-ai/
 
 ---
 
-## 📝 Hackathon Submission Guide
-
-Detailed answers to all 12 questions of the application form and the 5-minute video pitch screenplay are available in [docs/SUBMISSION.md](docs/SUBMISSION.md).
