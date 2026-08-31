@@ -20,7 +20,7 @@ from backend.app.schemas import (
 
 ROOT = Path(__file__).resolve().parents[3]
 DATA_PATH = ROOT / "data" / "cases.json"
-DB_PATH = ROOT / "data" / "cases.db"
+DB_PATH = Path("/tmp/cases.db") if os.getenv("VERCEL") else (ROOT / "data" / "cases.db")
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 
