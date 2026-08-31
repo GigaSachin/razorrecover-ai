@@ -34,10 +34,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       try {
         return JSON.parse(saved)
       } catch {
-        return DEFAULT_ADMIN
+        return null
       }
     }
-    return DEFAULT_ADMIN
+    return null
   })
 
   useEffect(() => {
